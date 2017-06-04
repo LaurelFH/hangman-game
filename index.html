@@ -1,0 +1,111 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Yokai Hangman!</title>
+<!--css reset-->
+
+<!--stylesheets-->
+
+<!--bootstrap-->
+
+
+<!--jQuery-->
+
+</head>
+<body>
+<div id="">
+	
+
+
+</div>
+
+<div id= "mainDisplay">
+	
+
+</div>
+
+
+
+	<script type="text/javascript">
+		
+///////Global variables to track score and words and guesses 
+var guessWord = "";
+var wordBank = ["cat", "yokai", "tempura", "fire"];
+var wins = 0;
+var losses = 0;
+var chancesLeft = 10;
+var letterChosen = "";
+var guessedLetters = [];
+var playerGuess = ""; 
+
+/////////////Functions
+
+//chooses random word from the wordbank
+
+function pickWord () {
+	guessWord = Math.floor(Math.random() * wordBank.length);
+
+}
+
+
+//compares the letter from the player to the letters in the selected word
+
+function compareLetter(){
+
+	if (playerGuess == 
+
+}
+
+//updates the score and other info on the display
+
+function updateScore(){
+
+
+}
+//function to display guessed letters
+
+function displayGuessedLetters(){
+
+
+
+}
+
+
+////////////Events
+
+//starts the game by selecting a word from the wordlist and recording info from the player 
+
+document.onkeyup = function (event){
+
+	if(guessWord == ""){pickWord();
+
+}
+
+
+
+
+
+
+//records the player's keystroke 
+
+
+
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+	
+</body>
+</html>
