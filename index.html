@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -14,16 +14,30 @@
 
 </head>
 <body>
-<div id="">
-	
 
+<h1>Hello and let's play Hangman!</h1>
+<p>Press any key to begin the game and tell me what you think my word is!</p>
 
+<!--empty div for a banner image-->
+<div id="bannerimage">
 </div>
 
-<div id= "mainDisplay">
-	
 
+<!--empty div for the score-->
+
+<div id= "scoreDisplay">
 </div>
+<!--empty div to put the guesses-->
+
+
+<!--empty div with the letters to be revealed-->
+<div id ="revealSection">
+</div>
+
+<!--empty div for the footer-->
+<footer>
+
+</footer>
 
 
 
@@ -37,7 +51,7 @@ var losses = 0;
 var chancesLeft = 10;
 var letterChosen = "";
 var guessedLetters = [];
-var playerGuess = ""; 
+var playerLetter= ""; 
 
 /////////////Functions
 
@@ -49,27 +63,66 @@ function pickWord () {
 }
 
 
-//compares the letter from the player to the letters in the selected word
+//function to select a letter from the guess word 
+function letterGuess(){
+	guessWord
 
-function compareLetter(){
 
-	if (playerGuess == 
 
 }
+
+//function to push the letter that was guesed to the guessed letter collection 
+
+function pushLetterGuess(){
+
+
+}
+
+
+//compares the letter from the player to the letters in the selected word
+
+function searchLetter(){
+
+	if (playerLetter == 
+
+}
+
+//function to display guessed letters
+
+function displayGuessedLetters(){
+
+}
+
+//function to reveal letters from the selected word
+
+function dashReveal (){
+	var reveal = "";
+	//loop to check the letter against the selected word
+	for(i = 0; i < guessWord.length; i++){
+		if (guessedLetters.indexOf(guessWord[i] != -1){
+		//adds letter if present 
+			reveal += guessWord[i];	
+		//add dashes if letter is not present
+		} else {
+			reveal += "_"} 
+
+			document.getElementById("revealSection").html = reveal;
+			
+
+
+	}
+
+}
+
+
 
 //updates the score and other info on the display
 
 function updateScore(){
 
-
 }
-//function to display guessed letters
-
-function displayGuessedLetters(){
 
 
-
-}
 
 
 ////////////Events
@@ -77,24 +130,39 @@ function displayGuessedLetters(){
 //starts the game by selecting a word from the wordlist and recording info from the player 
 
 document.onkeyup = function (event){
-
-	if(guessWord == ""){pickWord();
-
+	if(guessWord == ""){
+		pickWord();
+		return;
 }
 
+//records the player's keystroke and validates it??? 
+playerLetter = event.key.toLowercase();
+guessedLetters.push(playerLetter.toLowercase());
+
+//make sure the letter the palyer picked is inside of the selected word
+guessWord.indexOf(playerGuess){
+	//if the letter is not in the word, then the chances less go down by 1
+	if(playerLetter == -1){
+		chancesLeft--;
+		}
+}
+
+//
+
+
+
+//updates the screen so the player can see the results 
 
 
 
 
 
-//records the player's keystroke 
-
-
-
-
-
-
-
+//resets the game for the player
+function resetGame(){
+	chancesLeft = 10;
+	computerGuess = "";
+	guessedLetters= [];
+}
 
 	</script>
 
