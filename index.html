@@ -30,6 +30,15 @@
 <!--empty div to put the guesses-->
 
 
+<!--empty div to put incorrect letter display-->
+<div id="incorrectLettersDisplay">
+</div>
+
+<!--empty div to put correct letter display-->
+<div id="correctLetterDisplay">
+</div>
+
+
 <!--empty div with the letters to be revealed-->
 <div id ="revealSection">
 </div>
@@ -49,7 +58,8 @@ var wordBank = ["cat", "yokai", "tempura", "fire"];
 var wins = 0;
 var losses = 0;
 var chancesLeft = 10;//give the player 5 chances over the number of letters in the word?
-var guessedLetters = [];
+var incorrectLetters = [];
+var correctLetters = [];
 
 ////////////Events
 
@@ -60,17 +70,14 @@ document.onkeyup = function (event){
 		pickWord();
 		
 	}
-
 	//make sure the letter the player picked is inside of the selected word; includes key from the player
-	checkLetter(event.key.toLowercase());
+	var playerEntry = event.key;
+	//alert(playerEntry);
+	checkLetter(playerEntry.toLowerCase());
 
-
-	//if the letter is not in the word, then the chances left go down by 1
-	if(){
-		chancesLeft--;
-	}
-	
 	//makes the player's letter visible and the tracking info for score and corect/incorrect letters visible 
+	displayWord();
+	displayGuessedLetters();
 	displayScore();
 	
 	//when there are no more chances left, the game will reset and select a new word 
@@ -81,54 +88,105 @@ document.onkeyup = function (event){
 
 }
 
-
 /////////////Functions
 
-//chooses random word from the wordbank
+//chooses random word from the wordbank array 
 
 function pickWord () {
-	guessWord = Math.floor(Math.random() * wordBank.length);
+	guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
 }
+
+
 
 //this will check to see if the letter the player selected is present in the word the computer selects and puts it in the guessed letter section
 //have to give this one a letter (parameter) to check!!! 
-function checkLetter(var letterToCheck){
-
-	//guessWord
+function checkLetter(letterToCheck){
+	var hasLetter = guessWord.includes(letterToCheck);
+	alert(hasLetter);
+	alert(letterToCheck);
+		//check if the letter that the player selected is in the random word 
+	if (hasLetter){
+		//if it is in the word, put the letter in the correct letter collection
+		correctLetters.push(letterToCheck);
+	}
+	else{
+		//else in the word, put the letter in the incorrrect letter collection, then chances left goes down by 1
+		incorrectLetters.push(letterToCheck); 
+		chancesLeft--;
+	}
 
 }
 
 
-//function to display guessed letters
+//function to display all letters
 
 function displayGuessedLetters(){
 
+	displayCorrectLetters();
+	displayIncorrectLetters();
+
 }
 
-//function to reveal letters from the selected word
+//displays the incorrects letters
 
-//function dashReveal (){
-//	var reveal = "";
-	//loop to check the letter against the selected word
-//	for(i = 0; i < guessWord.length; i++){
-//		if (guessedLetters)
-
-
+function displayIncorrectLetters(){
+	var displayIncorrectLetters = "<p>You have guessed: " + incorrectLetters.toString() + "</p>";
+ 
+	document.getElementById("incorrectLettersDisplay").innerHTML = displayIncorrectLetters;
+}
 
 
+//displays the correct letters and dashes 
+function displayCorrectLetters(){
+	//letter in my word string 
+	var wordString= "";
+	//loops through to check if the letter is in correct letter array 
+	for(var indexOfLetter = 0; indexOfLetter < guessWord.length; indexOfLetter++){
+		
+		//if the letter is in the correct letter array, then I want it to show this letter 
+		//assume that the player has not picked the letter wordString.charAt(i) until we find it in the correct letters array 
+		var hasPlayerCorrectlyGuessed = false;
+		//alert(correctLetters.length);
+		//have to loop through the array to see if the wordString.charAt(i) is in the correct letters array 
+		for(var indexInCorrectArr = 0; indexInCorrectArr < correctLetters.length; indexInCorrectArr++){
+
+			//if it is in the array then the value of hasPlayerCorrectlyGuessed should be true 
+			//alert(wordString.charAt(indexOfLetter));
+			if (wordString.charAt(indexOfLetter) == correctLetters[indexInCorrectArr]){
+				hasPlayerCorrectlyGuessed = true;
+
+			}
+		}
+
+
+		if (hasPlayerCorrectlyGuessed){
+			wordString += wordString.charAt(indexOfLetter);
+		}
+		//for anything else, it should put a dash instead 
+		else {
+			wordString += "_";
+
+		}
+	}
+
+//the function should also show the letters or dashes to the player 
+	document.getElementById("revealSection").innerHTML = wordString;
+}
 
 
 
-//			document.getElementById("revealSection").html = reveal;
-			
 
 
 //	}
 
 //}
 
+//presents the letters in the word as dashes 
+function displayWord () {
 
+
+}
 
 //updates the score and other info on the display
 
