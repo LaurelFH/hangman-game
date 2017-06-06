@@ -1,0 +1,31 @@
+.jumbotron{
+/*background: url(https://i.ytimg.com/vi/0k1m8Lt1XTM/maxresdefault.jpg) no-repeat center center;*/
+background: url(https://watchofyokai.com/wp-content/uploads/2015/04/youkai_watch-24-e1429657873164.jpg) no-repeat center center;
+ -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 600px;
+  max-height: 700px;
+  color: #ffffff;
+}
+
+/*.fluid-container{
+	background-color: #ADD8E6;
+}*/
+
+
+p, 
+h1 {
+	font-family: 'Wendy One', sans-serif;
+
+
+}
+
+
+.img-thumbnail{
+	max-height: 200px;
+	max-width: 200px;
+	border: none;
+
+}

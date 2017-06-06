@@ -1,7 +1,7 @@
 //Javascript file for Hangman-game		
 ///////Global variables to track score and words and guesses 
 var guessWord = "";
-var wordBank = ["cat", "yokai", "tempura", "fire"];
+var wordBank = ["cat", "yokai", "tempura", "fire", "sushi", "street", "watch", "coin", "tree", "shrine", "ghost","spirit", "devil", "school"];
 var wins = 0;
 var losses = 0;
 var chancesLeft = 10;//give the player 5 chances over the number of letters in the word?
