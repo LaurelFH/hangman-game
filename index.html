@@ -48,10 +48,39 @@ var guessWord = "";
 var wordBank = ["cat", "yokai", "tempura", "fire"];
 var wins = 0;
 var losses = 0;
-var chancesLeft = 10;
-var letterChosen = "";
+var chancesLeft = 10;//give the player 5 chances over the number of letters in the word?
 var guessedLetters = [];
-var playerLetter= ""; 
+
+////////////Events
+
+//starts the game by selecting a word from the wordlist and recording info from the player 
+
+document.onkeyup = function (event){
+	if(guessWord == ""){
+		pickWord();
+		
+	}
+
+	//make sure the letter the player picked is inside of the selected word; includes key from the player
+	checkLetter(event.key.toLowercase());
+
+
+	//if the letter is not in the word, then the chances left go down by 1
+	if(){
+		chancesLeft--;
+	}
+	
+	//makes the player's letter visible and the tracking info for score and corect/incorrect letters visible 
+	displayScore();
+	
+	//when there are no more chances left, the game will reset and select a new word 
+	if(chancesLeft == 0){
+		resetGame();
+	}
+
+
+}
+
 
 /////////////Functions
 
@@ -62,30 +91,14 @@ function pickWord () {
 
 }
 
+//this will check to see if the letter the player selected is present in the word the computer selects and puts it in the guessed letter section
+//have to give this one a letter (parameter) to check!!! 
+function checkLetter(var letterToCheck){
 
-//function to select a letter from the guess word 
-function letterGuess(){
-	guessWord
-
-
-
-}
-
-//function to push the letter that was guesed to the guessed letter collection 
-
-function pushLetterGuess(){
-
+	//guessWord
 
 }
 
-
-//compares the letter from the player to the letters in the selected word
-
-function searchLetter(){
-
-	if (playerLetter == 
-
-}
 
 //function to display guessed letters
 
@@ -95,64 +108,33 @@ function displayGuessedLetters(){
 
 //function to reveal letters from the selected word
 
-function dashReveal (){
-	var reveal = "";
+//function dashReveal (){
+//	var reveal = "";
 	//loop to check the letter against the selected word
-	for(i = 0; i < guessWord.length; i++){
-		if (guessedLetters.indexOf(guessWord[i] != -1){
-		//adds letter if present 
-			reveal += guessWord[i];	
-		//add dashes if letter is not present
-		} else {
-			reveal += "_"} 
+//	for(i = 0; i < guessWord.length; i++){
+//		if (guessedLetters)
 
-			document.getElementById("revealSection").html = reveal;
+
+
+
+
+
+
+//			document.getElementById("revealSection").html = reveal;
 			
 
 
-	}
+//	}
 
-}
+//}
 
 
 
 //updates the score and other info on the display
 
-function updateScore(){
+function displayScore(){
 
 }
-
-
-
-
-////////////Events
-
-//starts the game by selecting a word from the wordlist and recording info from the player 
-
-document.onkeyup = function (event){
-	if(guessWord == ""){
-		pickWord();
-		return;
-}
-
-//records the player's keystroke and validates it??? 
-playerLetter = event.key.toLowercase();
-guessedLetters.push(playerLetter.toLowercase());
-
-//make sure the letter the palyer picked is inside of the selected word
-guessWord.indexOf(playerGuess){
-	//if the letter is not in the word, then the chances less go down by 1
-	if(playerLetter == -1){
-		chancesLeft--;
-		}
-}
-
-//
-
-
-
-//updates the screen so the player can see the results 
-
 
 
 
